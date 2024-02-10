@@ -555,32 +555,32 @@ def actualizar_persona():
 
 # # APIs - Fin
 
-# @app.route("/agregar_transaccion")
-# def formulario_agregar_transaccion():
-#     personas= controlador_personas.obtener_personas()
-#     habitacion= controlador_habitaciones.obtener_habitacion()
-#     return render_template("agregar_transaccion.html",personas=personas,habitacion=habitacion)
+@app.route("/agregar_transaccion")
+def formulario_agregar_transaccion():
+    personas= controlador_personas.obtener_personas()
+    habitacion= controlador_habitaciones.obtener_habitacion()
+    return render_template("agregar_transaccion.html",personas=personas,habitacion=habitacion)
 
 
-# @app.route("/guardar_transaccion", methods=["POST"])
-# def guardar_transaccion():
-#     fecha_registro = request.form["fecha_registro"]
-#     hora_registro = request.form["hora_registro"]
-#     tipo_transaccion = request.form["tipo_transaccion"]
-#     fecha_entrada = request.form["fecha_entrada"]
-#     hora_entrada = request.form["hora_entrada"]
-#     fecha_salida = request.form["fecha_salida"]
-#     hora_salida = request.form["hora_salida"]
-#     habitacion_id = request.form["habitacion_id"]
-#     persona_id = request.form["persona_id"]
-#     personas=controlador_personas.obtener_persona_por_id(persona_id)
-#     habitacion=controlador_habitaciones.obtener_habitacion_por_id(habitacion_id)
-#     if  personas is not None and habitacion is not None:
-#                controlador_transaccion.insertar_transaccion(fecha_registro, hora_registro, tipo_transaccion, fecha_entrada, hora_entrada, fecha_salida, hora_salida, habitacion_id, persona_id)
-#                return redirect("/transaccion")
+@app.route("/guardar_transaccion", methods=["POST"])
+def guardar_transaccion():
+    fecha_registro = request.form["fecha_registro"]
+    hora_registro = request.form["hora_registro"]
+    tipo_transaccion = request.form["tipo_transaccion"]
+    fecha_entrada = request.form["fecha_entrada"]
+    hora_entrada = request.form["hora_entrada"]
+    fecha_salida = request.form["fecha_salida"]
+    hora_salida = request.form["hora_salida"]
+    habitacion_id = request.form["habitacion_id"]
+    persona_id = request.form["persona_id"]
+    personas=controlador_personas.obtener_persona_por_id(persona_id)
+    habitacion=controlador_habitaciones.obtener_habitacion_por_id(habitacion_id)
+    if  personas is not None and habitacion is not None:
+               controlador_transaccion.insertar_transaccion(fecha_registro, hora_registro, tipo_transaccion, fecha_entrada, hora_entrada, fecha_salida, hora_salida, habitacion_id, persona_id)
+               return redirect("/transaccion")
 
-#     return redirect("/transaccion")
-#     # De cualquier modo, y si todo fue bien, redireccionar
+    return redirect("/transaccion")
+    # De cualquier modo, y si todo fue bien, redireccionar
 
 
 
